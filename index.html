@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica de Estética Bella</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fffafc;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #c2185b;
+    }
+    header {
+      background: #fff0f5;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      color: #c2185b;
+      text-shadow: 2px 2px 5px rgba(194, 24, 91, 0.7);
+      font-size: 4.5rem;
+    }
+    nav {
+      margin-bottom: 1rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #c2185b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cta-btn {
+      padding: 1rem 2rem;
+      background-color: #c2185b;
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    /* Carrossel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 960px;
+      margin: 2rem auto;
+      border-radius: 16px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 960px;
+      margin: auto;
+      text-align: center;
+    }
+
+    /* Cards e serviços */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #fff0f5;
+      border: 1px solid #e0b0c6;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(194, 24, 91, 0.15);
+      padding: 2rem 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(194, 24, 91, 0.3);
+    }
+    .card-icon {
+      font-size: 3.5rem;
+      color: #c2185b;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #a31648;
+    }
+
+    /* Títulos com destaque */
+    #servicos h2,
+    #depoimentos h2,
+    #contato h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #c2185b;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #c2185b;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background-color: #fff0f5;
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .testimonial {
+      border-left: 4px solid #c2185b;
+      background: #fdf3f8;
+      padding: 1rem 1.5rem;
+      margin: 1rem auto;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      max-width: 700px;
+    }
+    .testimonial:hover {
+        background-color: #f2a0c1;
+        transition: background-color 0.3s ease;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input, select, button {
+      padding: 0.75rem;
+      margin: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 320px;
+      font-size: 1rem;
+    }
+    button {
+      background: #c2185b;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .social-links a {
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      color: #c2185b;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #c2185b;
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: #f8eaf1;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <h1>Clínica de Estética Bella</h1>
+    <p>Realce sua beleza natural com nossos especialistas</p>
+    <a href="#contato" class="cta-btn">Agende agora</a>
+  </header>
+
+  <section class="carousel" aria-label="Galeria de imagens">
+    <div class="carousel-track">
+      <img src="./image/reiki.jpg" alt="Sessão de Reiki" />
+      <img src="./image/manicure.jpg" alt="Manicure" />
+      <img src="./image/foto04.jpg" alt="Tratamento facial" />
+      <img src="./image/drenagem-linfatica.jpg" alt="Drenagem linfática" />
+    </div>
+  </section>
+
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h3>Limpeza de Pele Profunda</h3>
+        <p>Remoção de impurezas e renovação celular.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💉</div>
+        <h3>Botox e Preenchimentos</h3>
+        <p>Rejuvenesça com segurança.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💆‍♀️</div>
+        <h3>Drenagem Linfática</h3>
+        <p>Redução de inchaço e ativação da circulação.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧘‍♀️</div>
+        <h3>Sessões de Reiki</h3>
+        <p>Equilibre sua energia e alivie o estresse.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💅</div>
+        <h3>Manicure</h3>
+        <p>Unhas impecáveis e cuidadas com carinho.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🦶</div>
+        <h3>Pedicure</h3>
+        <p>Pés lindos, hidratados e bem tratados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimentos">
+    <h2>Depoimentos</h2>
+    <div class="testimonial"><p><strong>Ana:</strong> "Atendimento impecável!"</p></div>
+    <div class="testimonial"><p><strong>Marina:</strong> "Minha pele nunca esteve tão bonita!"</p></div>
+    <div class="testimonial"><p><strong>Fernanda:</strong> "Reiki semanal mudou minha vida."</p></div>
+  </section>
+
+  <section id="contato">
+    <form id="formulario">
+      <h2>Agende uma consulta</h2>
+      <input type="text" id="nome" placeholder="Nome" required />
+      <input type="email" id="email" placeholder="E-mail" required />
+      <input type="tel" id="telefone" placeholder="Telefone" required />
+      <select id="servico">
+        <option value="">Escolha um serviço</option>
+        <option value="Limpeza de Pele">Limpeza de Pele</option>
+        <option value="Botox">Botox</option>
+        <option value="Reiki">Reiki</option>
+      </select>
+      <button type="submit">Enviar pelo WhatsApp</button>
+    </form>
+  </section>
+
+  <section class="social-links">
+    <h2>Nos siga</h2>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+  </section>
+
+  <div class="popup">
+    <p><strong>Promoção:</strong> 10% OFF na primeira sessão!</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Clínica de Estética Bella. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const telefone = document.getElementById("telefone").value;
+      const servico = document.getElementById("servico").value;
+      const mensagem = `Olá, me chamo ${nome}. Gostaria de agendar o serviço de ${servico}.\nEmail: ${email}\nTelefone: ${telefone}`;
+      const numero = "5511999999999"; // Substitua pelo número real
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, "_blank");
+    });
+
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    let currentIndex = 0;
+    let slideWidth = slides[0].getBoundingClientRect().width;
+
+    function moveToSlide(index) {
+      track.style.transform = `translateX(-${slideWidth * index}px)`;
+    }
+
+    function autoPlay() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      moveToSlide(currentIndex);
+    }
+
+    window.addEventListener('resize', () => {
+      slideWidth = slides[0].getBoundingClientRect().width;
+      moveToSlide(currentIndex);
+    });
+
+    setInterval(autoPlay, 4000);
+  </script>
+</body>
+</html>
